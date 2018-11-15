@@ -496,6 +496,110 @@ a.uk-link-reset:hover,
   text-decoration: none !important;
 }
 /* ========================================================================
+   Component: List
+ ========================================================================== */
+.uk-list {
+  padding: 0;
+  list-style: none;
+}
+/*
+ * Micro clearfix
+ */
+.uk-list > li::before,
+.uk-list > li::after {
+  content: "";
+  display: table;
+}
+.uk-list > li::after {
+  clear: both;
+}
+/*
+ * Remove margin from the last-child
+ */
+.uk-list > li > :last-child {
+  margin-bottom: 0;
+}
+/*
+ * Nested lists
+ */
+.uk-list ul {
+  margin: 0;
+  padding-left: 30px;
+  list-style: none;
+}
+/*
+ * Style
+ */
+.uk-list > li:nth-child(n+2),
+.uk-list > li > ul {
+  margin-top: 10px;
+}
+/* Style modifiers
+ ========================================================================== */
+/*
+ * Divider
+ */
+.uk-list-divider > li:nth-child(n+2) {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e5e5e5;
+}
+/*
+ * Striped
+ */
+.uk-list-striped > li {
+  padding: 10px 10px;
+}
+.uk-list-striped > li:nth-of-type(odd) {
+  background: #f8f8f8;
+}
+.uk-list-striped > li:nth-child(n+2) {
+  margin-top: 0;
+}
+/*
+ * Bullet
+ * 1. Reset display `table` which causes issues in combination with multi column layouts.
+ */
+.uk-list-bullet > li {
+  position: relative;
+  padding-left: calc(1.5em + 10px);
+}
+.uk-list-bullet > li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.5em;
+  height: 1.5em;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%226%22%20height%3D%226%22%20viewBox%3D%220%200%206%206%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Ccircle%20fill%3D%22%23666%22%20cx%3D%223%22%20cy%3D%223%22%20r%3D%223%22%20%2F%3E%0A%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  /* 1 */
+  display: block;
+}
+/* Size modifier
+ ========================================================================== */
+.uk-list-large > li:nth-child(n+2),
+.uk-list-large > li > ul {
+  margin-top: 20px;
+}
+/*
+ * Divider
+ */
+.uk-list-large.uk-list-divider > li:nth-child(n+2) {
+  margin-top: 20px;
+  padding-top: 20px;
+}
+/*
+ * Striped
+ */
+.uk-list-large.uk-list-striped > li {
+  padding: 20px 10px;
+}
+.uk-list-large.uk-list-striped > li:nth-child(n+2) {
+  margin-top: 0;
+}
+/* ========================================================================
    Component: Table
  ========================================================================== */
 /*
@@ -1554,6 +1658,118 @@ select.uk-form-width-xsmall {
   /* 3 */
   position: relative;
 }
+/* ========================================================================
+   Component: Section
+ ========================================================================== */
+/*
+ * 1. Make it work with `100vh` and height in general
+ */
+.uk-section {
+  box-sizing: border-box;
+  /* 1 */
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+/* Desktop and bigger */
+@media (min-width: 960px) {
+  .uk-section {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+}
+/*
+ * Micro clearfix
+ */
+.uk-section::before,
+.uk-section::after {
+  content: "";
+  display: table;
+}
+.uk-section::after {
+  clear: both;
+}
+/*
+ * Remove margin from the last-child
+ */
+.uk-section > :last-child {
+  margin-bottom: 0;
+}
+/* Size modifiers
+ ========================================================================== */
+/*
+ * XSmall
+ */
+.uk-section-xsmall {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+/*
+ * Small
+ */
+.uk-section-small {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+/*
+ * Large
+ */
+.uk-section-large {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .uk-section-large {
+    padding-top: 140px;
+    padding-bottom: 140px;
+  }
+}
+/*
+ * XLarge
+ */
+.uk-section-xlarge {
+  padding-top: 140px;
+  padding-bottom: 140px;
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .uk-section-xlarge {
+    padding-top: 210px;
+    padding-bottom: 210px;
+  }
+}
+/* Style modifiers
+ ========================================================================== */
+/*
+ * Default
+ */
+.uk-section-default {
+  background: #fff;
+}
+/*
+ * Muted
+ */
+.uk-section-muted {
+  background: #f8f8f8;
+}
+/*
+ * Primary
+ */
+.uk-section-primary {
+  background: #1e87f0;
+}
+/*
+ * Secondary
+ */
+.uk-section-secondary {
+  background: #222;
+}
+/* Overlap modifier
+ ========================================================================== */
+/*
+ * Reserved modifier to make a section overlap another section with an border image
+ * Implemented by the theme
+ */
 /* ========================================================================
    Component: Container
  ========================================================================== */
@@ -6514,17 +6730,27 @@ iframe.uk-cover {
  * `uk-dark` is or dark colors on light backgrounds
  */
 .uk-light,
+.uk-section-primary:not(.uk-preserve-color),
+.uk-section-secondary:not(.uk-preserve-color),
 .uk-offcanvas-bar {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light a,
 .uk-light .uk-link,
+.uk-section-primary:not(.uk-preserve-color) a,
+.uk-section-primary:not(.uk-preserve-color) .uk-link,
+.uk-section-secondary:not(.uk-preserve-color) a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-link,
 .uk-offcanvas-bar a,
 .uk-offcanvas-bar .uk-link {
   color: #fff;
 }
 .uk-light a:hover,
 .uk-light .uk-link:hover,
+.uk-section-primary:not(.uk-preserve-color) a:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-link:hover,
+.uk-section-secondary:not(.uk-preserve-color) a:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-link:hover,
 .uk-offcanvas-bar a:hover,
 .uk-offcanvas-bar .uk-link:hover {
   color: #fff;
@@ -6532,12 +6758,20 @@ iframe.uk-cover {
 .uk-light :not(pre) > code,
 .uk-light :not(pre) > kbd,
 .uk-light :not(pre) > samp,
+.uk-section-primary:not(.uk-preserve-color) :not(pre) > code,
+.uk-section-primary:not(.uk-preserve-color) :not(pre) > kbd,
+.uk-section-primary:not(.uk-preserve-color) :not(pre) > samp,
+.uk-section-secondary:not(.uk-preserve-color) :not(pre) > code,
+.uk-section-secondary:not(.uk-preserve-color) :not(pre) > kbd,
+.uk-section-secondary:not(.uk-preserve-color) :not(pre) > samp,
 .uk-offcanvas-bar :not(pre) > code,
 .uk-offcanvas-bar :not(pre) > kbd,
 .uk-offcanvas-bar :not(pre) > samp {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light em,
+.uk-section-primary:not(.uk-preserve-color) em,
+.uk-section-secondary:not(.uk-preserve-color) em,
 .uk-offcanvas-bar em {
   color: #fff;
 }
@@ -6553,6 +6787,30 @@ iframe.uk-cover {
 .uk-light .uk-h5,
 .uk-light h6,
 .uk-light .uk-h6,
+.uk-section-primary:not(.uk-preserve-color) h1,
+.uk-section-primary:not(.uk-preserve-color) .uk-h1,
+.uk-section-primary:not(.uk-preserve-color) h2,
+.uk-section-primary:not(.uk-preserve-color) .uk-h2,
+.uk-section-primary:not(.uk-preserve-color) h3,
+.uk-section-primary:not(.uk-preserve-color) .uk-h3,
+.uk-section-primary:not(.uk-preserve-color) h4,
+.uk-section-primary:not(.uk-preserve-color) .uk-h4,
+.uk-section-primary:not(.uk-preserve-color) h5,
+.uk-section-primary:not(.uk-preserve-color) .uk-h5,
+.uk-section-primary:not(.uk-preserve-color) h6,
+.uk-section-primary:not(.uk-preserve-color) .uk-h6,
+.uk-section-secondary:not(.uk-preserve-color) h1,
+.uk-section-secondary:not(.uk-preserve-color) .uk-h1,
+.uk-section-secondary:not(.uk-preserve-color) h2,
+.uk-section-secondary:not(.uk-preserve-color) .uk-h2,
+.uk-section-secondary:not(.uk-preserve-color) h3,
+.uk-section-secondary:not(.uk-preserve-color) .uk-h3,
+.uk-section-secondary:not(.uk-preserve-color) h4,
+.uk-section-secondary:not(.uk-preserve-color) .uk-h4,
+.uk-section-secondary:not(.uk-preserve-color) h5,
+.uk-section-secondary:not(.uk-preserve-color) .uk-h5,
+.uk-section-secondary:not(.uk-preserve-color) h6,
+.uk-section-secondary:not(.uk-preserve-color) .uk-h6,
 .uk-offcanvas-bar h1,
 .uk-offcanvas-bar .uk-h1,
 .uk-offcanvas-bar h2,
@@ -6569,44 +6827,90 @@ iframe.uk-cover {
 }
 .uk-light hr,
 .uk-light .uk-hr,
+.uk-section-primary:not(.uk-preserve-color) hr,
+.uk-section-primary:not(.uk-preserve-color) .uk-hr,
+.uk-section-secondary:not(.uk-preserve-color) hr,
+.uk-section-secondary:not(.uk-preserve-color) .uk-hr,
 .uk-offcanvas-bar hr,
 .uk-offcanvas-bar .uk-hr {
   border-top-color: rgba(255, 255, 255, 0.2);
 }
 .uk-light a.uk-link-muted,
 .uk-light .uk-link-muted a,
+.uk-section-primary:not(.uk-preserve-color) a.uk-link-muted,
+.uk-section-primary:not(.uk-preserve-color) .uk-link-muted a,
+.uk-section-secondary:not(.uk-preserve-color) a.uk-link-muted,
+.uk-section-secondary:not(.uk-preserve-color) .uk-link-muted a,
 .uk-offcanvas-bar a.uk-link-muted,
 .uk-offcanvas-bar .uk-link-muted a {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light a.uk-link-muted:hover,
 .uk-light .uk-link-muted a:hover,
+.uk-section-primary:not(.uk-preserve-color) a.uk-link-muted:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-link-muted a:hover,
+.uk-section-secondary:not(.uk-preserve-color) a.uk-link-muted:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-link-muted a:hover,
 .uk-offcanvas-bar a.uk-link-muted:hover,
 .uk-offcanvas-bar .uk-link-muted a:hover {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light a.uk-link-text:hover,
 .uk-light .uk-link-text a:hover,
+.uk-section-primary:not(.uk-preserve-color) a.uk-link-text:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-link-text a:hover,
+.uk-section-secondary:not(.uk-preserve-color) a.uk-link-text:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-link-text a:hover,
 .uk-offcanvas-bar a.uk-link-text:hover,
 .uk-offcanvas-bar .uk-link-text a:hover {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light a.uk-link-heading:hover,
 .uk-light .uk-link-heading a:hover,
+.uk-section-primary:not(.uk-preserve-color) a.uk-link-heading:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-link-heading a:hover,
+.uk-section-secondary:not(.uk-preserve-color) a.uk-link-heading:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-link-heading a:hover,
 .uk-offcanvas-bar a.uk-link-heading:hover,
 .uk-offcanvas-bar .uk-link-heading a:hover {
   color: #fff;
 }
+.uk-light .uk-list-divider > li:nth-child(n+2),
+.uk-section-primary:not(.uk-preserve-color) .uk-list-divider > li:nth-child(n+2),
+.uk-section-secondary:not(.uk-preserve-color) .uk-list-divider > li:nth-child(n+2),
+.uk-offcanvas-bar .uk-list-divider > li:nth-child(n+2) {
+  border-top-color: rgba(255, 255, 255, 0.2);
+}
+.uk-light .uk-list-striped > li:nth-of-type(odd),
+.uk-section-primary:not(.uk-preserve-color) .uk-list-striped > li:nth-of-type(odd),
+.uk-section-secondary:not(.uk-preserve-color) .uk-list-striped > li:nth-of-type(odd),
+.uk-offcanvas-bar .uk-list-striped > li:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.uk-light .uk-list-bullet > li::before,
+.uk-section-primary:not(.uk-preserve-color) .uk-list-bullet > li::before,
+.uk-section-secondary:not(.uk-preserve-color) .uk-list-bullet > li::before,
+.uk-offcanvas-bar .uk-list-bullet > li::before {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%226%22%20height%3D%226%22%20viewBox%3D%220%200%206%206%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Ccircle%20fill%3D%22rgba%28255,%20255,%20255,%200.7%29%22%20cx%3D%223%22%20cy%3D%223%22%20r%3D%223%22%20%2F%3E%0A%3C%2Fsvg%3E");
+}
 .uk-light .uk-table th,
+.uk-section-primary:not(.uk-preserve-color) .uk-table th,
+.uk-section-secondary:not(.uk-preserve-color) .uk-table th,
 .uk-offcanvas-bar .uk-table th {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-table caption,
+.uk-section-primary:not(.uk-preserve-color) .uk-table caption,
+.uk-section-secondary:not(.uk-preserve-color) .uk-table caption,
 .uk-offcanvas-bar .uk-table caption {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-table > tr.uk-active,
 .uk-light .uk-table tbody tr.uk-active,
+.uk-section-primary:not(.uk-preserve-color) .uk-table > tr.uk-active,
+.uk-section-primary:not(.uk-preserve-color) .uk-table tbody tr.uk-active,
+.uk-section-secondary:not(.uk-preserve-color) .uk-table > tr.uk-active,
+.uk-section-secondary:not(.uk-preserve-color) .uk-table tbody tr.uk-active,
 .uk-offcanvas-bar .uk-table > tr.uk-active,
 .uk-offcanvas-bar .uk-table tbody tr.uk-active {
   background: rgba(255, 255, 255, 0.08);
@@ -6614,6 +6918,12 @@ iframe.uk-cover {
 .uk-light .uk-table-divider > tr:not(:first-child),
 .uk-light .uk-table-divider > :not(:first-child) > tr,
 .uk-light .uk-table-divider > :first-child > tr:not(:first-child),
+.uk-section-primary:not(.uk-preserve-color) .uk-table-divider > tr:not(:first-child),
+.uk-section-primary:not(.uk-preserve-color) .uk-table-divider > :not(:first-child) > tr,
+.uk-section-primary:not(.uk-preserve-color) .uk-table-divider > :first-child > tr:not(:first-child),
+.uk-section-secondary:not(.uk-preserve-color) .uk-table-divider > tr:not(:first-child),
+.uk-section-secondary:not(.uk-preserve-color) .uk-table-divider > :not(:first-child) > tr,
+.uk-section-secondary:not(.uk-preserve-color) .uk-table-divider > :first-child > tr:not(:first-child),
 .uk-offcanvas-bar .uk-table-divider > tr:not(:first-child),
 .uk-offcanvas-bar .uk-table-divider > :not(:first-child) > tr,
 .uk-offcanvas-bar .uk-table-divider > :first-child > tr:not(:first-child) {
@@ -6621,45 +6931,71 @@ iframe.uk-cover {
 }
 .uk-light .uk-table-striped > tr:nth-of-type(odd),
 .uk-light .uk-table-striped tbody tr:nth-of-type(odd),
+.uk-section-primary:not(.uk-preserve-color) .uk-table-striped > tr:nth-of-type(odd),
+.uk-section-primary:not(.uk-preserve-color) .uk-table-striped tbody tr:nth-of-type(odd),
+.uk-section-secondary:not(.uk-preserve-color) .uk-table-striped > tr:nth-of-type(odd),
+.uk-section-secondary:not(.uk-preserve-color) .uk-table-striped tbody tr:nth-of-type(odd),
 .uk-offcanvas-bar .uk-table-striped > tr:nth-of-type(odd),
 .uk-offcanvas-bar .uk-table-striped tbody tr:nth-of-type(odd) {
   background: rgba(255, 255, 255, 0.1);
 }
 .uk-light .uk-table-hover > tr:hover,
 .uk-light .uk-table-hover tbody tr:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-table-hover > tr:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-table-hover tbody tr:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-table-hover > tr:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-table-hover tbody tr:hover,
 .uk-offcanvas-bar .uk-table-hover > tr:hover,
 .uk-offcanvas-bar .uk-table-hover tbody tr:hover {
   background: rgba(255, 255, 255, 0.08);
 }
 .uk-light .uk-icon-link,
+.uk-section-primary:not(.uk-preserve-color) .uk-icon-link,
+.uk-section-secondary:not(.uk-preserve-color) .uk-icon-link,
 .uk-offcanvas-bar .uk-icon-link {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-icon-link:hover,
 .uk-light .uk-icon-link:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-icon-link:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-icon-link:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-icon-link:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-icon-link:focus,
 .uk-offcanvas-bar .uk-icon-link:hover,
 .uk-offcanvas-bar .uk-icon-link:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-icon-link:active,
 .uk-light .uk-active > .uk-icon-link,
+.uk-section-primary:not(.uk-preserve-color) .uk-icon-link:active,
+.uk-section-primary:not(.uk-preserve-color) .uk-active > .uk-icon-link,
+.uk-section-secondary:not(.uk-preserve-color) .uk-icon-link:active,
+.uk-section-secondary:not(.uk-preserve-color) .uk-active > .uk-icon-link,
 .uk-offcanvas-bar .uk-icon-link:active,
 .uk-offcanvas-bar .uk-active > .uk-icon-link {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-icon-button,
+.uk-section-primary:not(.uk-preserve-color) .uk-icon-button,
+.uk-section-secondary:not(.uk-preserve-color) .uk-icon-button,
 .uk-offcanvas-bar .uk-icon-button {
   background-color: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-icon-button:hover,
 .uk-light .uk-icon-button:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-icon-button:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-icon-button:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-icon-button:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-icon-button:focus,
 .uk-offcanvas-bar .uk-icon-button:hover,
 .uk-offcanvas-bar .uk-icon-button:focus {
   background-color: rgba(242, 242, 242, 0.1);
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-icon-button:active,
+.uk-section-primary:not(.uk-preserve-color) .uk-icon-button:active,
+.uk-section-secondary:not(.uk-preserve-color) .uk-icon-button:active,
 .uk-offcanvas-bar .uk-icon-button:active {
   background-color: rgba(230, 230, 230, 0.1);
   color: rgba(255, 255, 255, 0.7);
@@ -6667,6 +7003,12 @@ iframe.uk-cover {
 .uk-light .uk-input,
 .uk-light .uk-select,
 .uk-light .uk-textarea,
+.uk-section-primary:not(.uk-preserve-color) .uk-input,
+.uk-section-primary:not(.uk-preserve-color) .uk-select,
+.uk-section-primary:not(.uk-preserve-color) .uk-textarea,
+.uk-section-secondary:not(.uk-preserve-color) .uk-input,
+.uk-section-secondary:not(.uk-preserve-color) .uk-select,
+.uk-section-secondary:not(.uk-preserve-color) .uk-textarea,
 .uk-offcanvas-bar .uk-input,
 .uk-offcanvas-bar .uk-select,
 .uk-offcanvas-bar .uk-textarea {
@@ -6677,6 +7019,12 @@ iframe.uk-cover {
 .uk-light .uk-input:focus,
 .uk-light .uk-select:focus,
 .uk-light .uk-textarea:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-input:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-select:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-textarea:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-input:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-select:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-textarea:focus,
 .uk-offcanvas-bar .uk-input:focus,
 .uk-offcanvas-bar .uk-select:focus,
 .uk-offcanvas-bar .uk-textarea:focus {
@@ -6684,27 +7032,41 @@ iframe.uk-cover {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-input::-ms-input-placeholder,
+.uk-section-primary:not(.uk-preserve-color) .uk-input::-ms-input-placeholder,
+.uk-section-secondary:not(.uk-preserve-color) .uk-input::-ms-input-placeholder,
 .uk-offcanvas-bar .uk-input::-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.5) !important;
 }
 .uk-light .uk-input::placeholder,
+.uk-section-primary:not(.uk-preserve-color) .uk-input::placeholder,
+.uk-section-secondary:not(.uk-preserve-color) .uk-input::placeholder,
 .uk-offcanvas-bar .uk-input::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-textarea::-ms-input-placeholder,
+.uk-section-primary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder,
+.uk-section-secondary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder,
 .uk-offcanvas-bar .uk-textarea::-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.5) !important;
 }
 .uk-light .uk-textarea::placeholder,
+.uk-section-primary:not(.uk-preserve-color) .uk-textarea::placeholder,
+.uk-section-secondary:not(.uk-preserve-color) .uk-textarea::placeholder,
 .uk-offcanvas-bar .uk-textarea::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-select:not([multiple]):not([size]),
+.uk-section-primary:not(.uk-preserve-color) .uk-select:not([multiple]):not([size]),
+.uk-section-secondary:not(.uk-preserve-color) .uk-select:not([multiple]):not([size]),
 .uk-offcanvas-bar .uk-select:not([multiple]):not([size]) {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2224%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22rgba%28255,%20255,%20255,%200.7%29%22%20points%3D%2212%201%209%206%2015%206%22%20%2F%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22rgba%28255,%20255,%20255,%200.7%29%22%20points%3D%2212%2013%209%208%2015%208%22%20%2F%3E%0A%3C%2Fsvg%3E%0A");
 }
 .uk-light .uk-radio,
 .uk-light .uk-checkbox,
+.uk-section-primary:not(.uk-preserve-color) .uk-radio,
+.uk-section-primary:not(.uk-preserve-color) .uk-checkbox,
+.uk-section-secondary:not(.uk-preserve-color) .uk-radio,
+.uk-section-secondary:not(.uk-preserve-color) .uk-checkbox,
 .uk-offcanvas-bar .uk-radio,
 .uk-offcanvas-bar .uk-checkbox {
   background-color: rgba(242, 242, 242, 0.1);
@@ -6712,6 +7074,12 @@ iframe.uk-cover {
 .uk-light .uk-radio:checked,
 .uk-light .uk-checkbox:checked,
 .uk-light .uk-checkbox:indeterminate,
+.uk-section-primary:not(.uk-preserve-color) .uk-radio:checked,
+.uk-section-primary:not(.uk-preserve-color) .uk-checkbox:checked,
+.uk-section-primary:not(.uk-preserve-color) .uk-checkbox:indeterminate,
+.uk-section-secondary:not(.uk-preserve-color) .uk-radio:checked,
+.uk-section-secondary:not(.uk-preserve-color) .uk-checkbox:checked,
+.uk-section-secondary:not(.uk-preserve-color) .uk-checkbox:indeterminate,
 .uk-offcanvas-bar .uk-radio:checked,
 .uk-offcanvas-bar .uk-checkbox:checked,
 .uk-offcanvas-bar .uk-checkbox:indeterminate {
@@ -6720,38 +7088,60 @@ iframe.uk-cover {
 .uk-light .uk-radio:checked:focus,
 .uk-light .uk-checkbox:checked:focus,
 .uk-light .uk-checkbox:indeterminate:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-radio:checked:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-checkbox:checked:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-checkbox:indeterminate:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-radio:checked:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-checkbox:checked:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-checkbox:indeterminate:focus,
 .uk-offcanvas-bar .uk-radio:checked:focus,
 .uk-offcanvas-bar .uk-checkbox:checked:focus,
 .uk-offcanvas-bar .uk-checkbox:indeterminate:focus {
   background-color: #e6e6e6;
 }
 .uk-light .uk-radio:checked,
+.uk-section-primary:not(.uk-preserve-color) .uk-radio:checked,
+.uk-section-secondary:not(.uk-preserve-color) .uk-radio:checked,
 .uk-offcanvas-bar .uk-radio:checked {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Ccircle%20fill%3D%22%23666%22%20cx%3D%228%22%20cy%3D%228%22%20r%3D%222%22%20%2F%3E%0A%3C%2Fsvg%3E");
 }
 .uk-light .uk-checkbox:checked,
+.uk-section-primary:not(.uk-preserve-color) .uk-checkbox:checked,
+.uk-section-secondary:not(.uk-preserve-color) .uk-checkbox:checked,
 .uk-offcanvas-bar .uk-checkbox:checked {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2211%22%20viewBox%3D%220%200%2014%2011%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2212%201%205%207.5%202%205%201%205.5%205%2010%2013%201.5%22%20%2F%3E%0A%3C%2Fsvg%3E%0A");
 }
 .uk-light .uk-checkbox:indeterminate,
+.uk-section-primary:not(.uk-preserve-color) .uk-checkbox:indeterminate,
+.uk-section-secondary:not(.uk-preserve-color) .uk-checkbox:indeterminate,
 .uk-offcanvas-bar .uk-checkbox:indeterminate {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Crect%20fill%3D%22%23666%22%20x%3D%223%22%20y%3D%228%22%20width%3D%2210%22%20height%3D%221%22%20%2F%3E%0A%3C%2Fsvg%3E");
 }
 .uk-light .uk-form-icon,
+.uk-section-primary:not(.uk-preserve-color) .uk-form-icon,
+.uk-section-secondary:not(.uk-preserve-color) .uk-form-icon,
 .uk-offcanvas-bar .uk-form-icon {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-form-icon:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-form-icon:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-form-icon:hover,
 .uk-offcanvas-bar .uk-form-icon:hover {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-button-default,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-default,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-default,
 .uk-offcanvas-bar .uk-button-default {
   background-color: #fff;
   color: #666;
 }
 .uk-light .uk-button-default:hover,
 .uk-light .uk-button-default:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-default:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-default:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-default:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-default:focus,
 .uk-offcanvas-bar .uk-button-default:hover,
 .uk-offcanvas-bar .uk-button-default:focus {
   background-color: #f2f2f2;
@@ -6759,18 +7149,28 @@ iframe.uk-cover {
 }
 .uk-light .uk-button-default:active,
 .uk-light .uk-button-default.uk-active,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-default:active,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-default.uk-active,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-default:active,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-default.uk-active,
 .uk-offcanvas-bar .uk-button-default:active,
 .uk-offcanvas-bar .uk-button-default.uk-active {
   background-color: #e6e6e6;
   color: #666;
 }
 .uk-light .uk-button-primary,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-primary,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-primary,
 .uk-offcanvas-bar .uk-button-primary {
   background-color: #fff;
   color: #666;
 }
 .uk-light .uk-button-primary:hover,
 .uk-light .uk-button-primary:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-primary:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-primary:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-primary:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-primary:focus,
 .uk-offcanvas-bar .uk-button-primary:hover,
 .uk-offcanvas-bar .uk-button-primary:focus {
   background-color: #f2f2f2;
@@ -6778,18 +7178,28 @@ iframe.uk-cover {
 }
 .uk-light .uk-button-primary:active,
 .uk-light .uk-button-primary.uk-active,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-primary:active,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-primary.uk-active,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-primary:active,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-primary.uk-active,
 .uk-offcanvas-bar .uk-button-primary:active,
 .uk-offcanvas-bar .uk-button-primary.uk-active {
   background-color: #e6e6e6;
   color: #666;
 }
 .uk-light .uk-button-secondary,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-secondary,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-secondary,
 .uk-offcanvas-bar .uk-button-secondary {
   background-color: #fff;
   color: #666;
 }
 .uk-light .uk-button-secondary:hover,
 .uk-light .uk-button-secondary:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-secondary:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-secondary:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-secondary:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-secondary:focus,
 .uk-offcanvas-bar .uk-button-secondary:hover,
 .uk-offcanvas-bar .uk-button-secondary:focus {
   background-color: #f2f2f2;
@@ -6797,326 +7207,508 @@ iframe.uk-cover {
 }
 .uk-light .uk-button-secondary:active,
 .uk-light .uk-button-secondary.uk-active,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-secondary:active,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-secondary.uk-active,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-secondary:active,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-secondary.uk-active,
 .uk-offcanvas-bar .uk-button-secondary:active,
 .uk-offcanvas-bar .uk-button-secondary.uk-active {
   background-color: #e6e6e6;
   color: #666;
 }
 .uk-light .uk-button-text,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-text,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-text,
 .uk-offcanvas-bar .uk-button-text {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-button-text:hover,
 .uk-light .uk-button-text:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-text:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-text:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-text:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-text:focus,
 .uk-offcanvas-bar .uk-button-text:hover,
 .uk-offcanvas-bar .uk-button-text:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-button-text:disabled,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-text:disabled,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-text:disabled,
 .uk-offcanvas-bar .uk-button-text:disabled {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-button-link,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-link,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-link,
 .uk-offcanvas-bar .uk-button-link {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-button-link:hover,
 .uk-light .uk-button-link:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-link:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-link:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-link:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-button-link:focus,
 .uk-offcanvas-bar .uk-button-link:hover,
 .uk-offcanvas-bar .uk-button-link:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-grid-divider > :not(.uk-first-column)::before,
+.uk-section-primary:not(.uk-preserve-color) .uk-grid-divider > :not(.uk-first-column)::before,
+.uk-section-secondary:not(.uk-preserve-color) .uk-grid-divider > :not(.uk-first-column)::before,
 .uk-offcanvas-bar .uk-grid-divider > :not(.uk-first-column)::before {
   border-left-color: rgba(255, 255, 255, 0.2);
 }
 .uk-light .uk-grid-divider.uk-grid-stack > .uk-grid-margin::before,
+.uk-section-primary:not(.uk-preserve-color) .uk-grid-divider.uk-grid-stack > .uk-grid-margin::before,
+.uk-section-secondary:not(.uk-preserve-color) .uk-grid-divider.uk-grid-stack > .uk-grid-margin::before,
 .uk-offcanvas-bar .uk-grid-divider.uk-grid-stack > .uk-grid-margin::before {
   border-top-color: rgba(255, 255, 255, 0.2);
 }
 .uk-light .uk-close,
+.uk-section-primary:not(.uk-preserve-color) .uk-close,
+.uk-section-secondary:not(.uk-preserve-color) .uk-close,
 .uk-offcanvas-bar .uk-close {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-close:hover,
 .uk-light .uk-close:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-close:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-close:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-close:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-close:focus,
 .uk-offcanvas-bar .uk-close:hover,
 .uk-offcanvas-bar .uk-close:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-totop,
+.uk-section-primary:not(.uk-preserve-color) .uk-totop,
+.uk-section-secondary:not(.uk-preserve-color) .uk-totop,
 .uk-offcanvas-bar .uk-totop {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-totop:hover,
 .uk-light .uk-totop:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-totop:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-totop:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-totop:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-totop:focus,
 .uk-offcanvas-bar .uk-totop:hover,
 .uk-offcanvas-bar .uk-totop:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-totop:active,
+.uk-section-primary:not(.uk-preserve-color) .uk-totop:active,
+.uk-section-secondary:not(.uk-preserve-color) .uk-totop:active,
 .uk-offcanvas-bar .uk-totop:active {
   color: #fff;
 }
 .uk-light .uk-badge,
+.uk-section-primary:not(.uk-preserve-color) .uk-badge,
+.uk-section-secondary:not(.uk-preserve-color) .uk-badge,
 .uk-offcanvas-bar .uk-badge {
   background-color: #fff;
   color: #666;
 }
 .uk-light .uk-badge:hover,
 .uk-light .uk-badge:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-badge:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-badge:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-badge:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-badge:focus,
 .uk-offcanvas-bar .uk-badge:hover,
 .uk-offcanvas-bar .uk-badge:focus {
   color: #666;
 }
 .uk-light .uk-label,
+.uk-section-primary:not(.uk-preserve-color) .uk-label,
+.uk-section-secondary:not(.uk-preserve-color) .uk-label,
 .uk-offcanvas-bar .uk-label {
   background-color: #fff;
   color: #666;
 }
 .uk-light .uk-nav-parent-icon > .uk-parent > a::after,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-parent-icon > .uk-parent > a::after,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-parent-icon > .uk-parent > a::after,
 .uk-offcanvas-bar .uk-nav-parent-icon > .uk-parent > a::after {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2014%2014%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolyline%20fill%3D%22none%22%20stroke%3D%22rgba%28255,%20255,%20255,%200.7%29%22%20stroke-width%3D%221.1%22%20points%3D%2210%201%204%207%2010%2013%22%20%2F%3E%0A%3C%2Fsvg%3E");
 }
 .uk-light .uk-nav-parent-icon > .uk-parent.uk-open > a::after,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-parent-icon > .uk-parent.uk-open > a::after,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-parent-icon > .uk-parent.uk-open > a::after,
 .uk-offcanvas-bar .uk-nav-parent-icon > .uk-parent.uk-open > a::after {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2014%2014%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolyline%20fill%3D%22none%22%20stroke%3D%22rgba%28255,%20255,%20255,%200.7%29%22%20stroke-width%3D%221.1%22%20points%3D%221%204%207%2010%2013%204%22%20%2F%3E%0A%3C%2Fsvg%3E");
 }
 .uk-light .uk-nav-default > li > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-default > li > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-default > li > a,
 .uk-offcanvas-bar .uk-nav-default > li > a {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-nav-default > li > a:hover,
 .uk-light .uk-nav-default > li > a:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-default > li > a:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-default > li > a:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-default > li > a:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-default > li > a:focus,
 .uk-offcanvas-bar .uk-nav-default > li > a:hover,
 .uk-offcanvas-bar .uk-nav-default > li > a:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-nav-default > li.uk-active > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-default > li.uk-active > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-default > li.uk-active > a,
 .uk-offcanvas-bar .uk-nav-default > li.uk-active > a {
   color: #fff;
 }
 .uk-light .uk-nav-default .uk-nav-header,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-default .uk-nav-header,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-default .uk-nav-header,
 .uk-offcanvas-bar .uk-nav-default .uk-nav-header {
   color: #fff;
 }
 .uk-light .uk-nav-default .uk-nav-divider,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-default .uk-nav-divider,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-default .uk-nav-divider,
 .uk-offcanvas-bar .uk-nav-default .uk-nav-divider {
   border-top-color: rgba(255, 255, 255, 0.2);
 }
 .uk-light .uk-nav-default .uk-nav-sub a,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-default .uk-nav-sub a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-default .uk-nav-sub a,
 .uk-offcanvas-bar .uk-nav-default .uk-nav-sub a {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-nav-default .uk-nav-sub a:hover,
 .uk-light .uk-nav-default .uk-nav-sub a:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-default .uk-nav-sub a:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-default .uk-nav-sub a:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-default .uk-nav-sub a:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-default .uk-nav-sub a:focus,
 .uk-offcanvas-bar .uk-nav-default .uk-nav-sub a:hover,
 .uk-offcanvas-bar .uk-nav-default .uk-nav-sub a:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-nav-primary > li > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-primary > li > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-primary > li > a,
 .uk-offcanvas-bar .uk-nav-primary > li > a {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-nav-primary > li > a:hover,
 .uk-light .uk-nav-primary > li > a:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-primary > li > a:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-primary > li > a:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-primary > li > a:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-primary > li > a:focus,
 .uk-offcanvas-bar .uk-nav-primary > li > a:hover,
 .uk-offcanvas-bar .uk-nav-primary > li > a:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-nav-primary > li.uk-active > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-primary > li.uk-active > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-primary > li.uk-active > a,
 .uk-offcanvas-bar .uk-nav-primary > li.uk-active > a {
   color: #fff;
 }
 .uk-light .uk-nav-primary .uk-nav-header,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-primary .uk-nav-header,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-primary .uk-nav-header,
 .uk-offcanvas-bar .uk-nav-primary .uk-nav-header {
   color: #fff;
 }
 .uk-light .uk-nav-primary .uk-nav-divider,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-primary .uk-nav-divider,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-primary .uk-nav-divider,
 .uk-offcanvas-bar .uk-nav-primary .uk-nav-divider {
   border-top-color: rgba(255, 255, 255, 0.2);
 }
 .uk-light .uk-nav-primary .uk-nav-sub a,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-primary .uk-nav-sub a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-primary .uk-nav-sub a,
 .uk-offcanvas-bar .uk-nav-primary .uk-nav-sub a {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-nav-primary .uk-nav-sub a:hover,
 .uk-light .uk-nav-primary .uk-nav-sub a:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-primary .uk-nav-sub a:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-primary .uk-nav-sub a:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-primary .uk-nav-sub a:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-primary .uk-nav-sub a:focus,
 .uk-offcanvas-bar .uk-nav-primary .uk-nav-sub a:hover,
 .uk-offcanvas-bar .uk-nav-primary .uk-nav-sub a:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-navbar-nav > li > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-navbar-nav > li > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-navbar-nav > li > a,
 .uk-offcanvas-bar .uk-navbar-nav > li > a {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-navbar-nav > li:hover > a,
 .uk-light .uk-navbar-nav > li > a:focus,
 .uk-light .uk-navbar-nav > li > a.uk-open,
+.uk-section-primary:not(.uk-preserve-color) .uk-navbar-nav > li:hover > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-navbar-nav > li > a:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-navbar-nav > li > a.uk-open,
+.uk-section-secondary:not(.uk-preserve-color) .uk-navbar-nav > li:hover > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-navbar-nav > li > a:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-navbar-nav > li > a.uk-open,
 .uk-offcanvas-bar .uk-navbar-nav > li:hover > a,
 .uk-offcanvas-bar .uk-navbar-nav > li > a:focus,
 .uk-offcanvas-bar .uk-navbar-nav > li > a.uk-open {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-navbar-nav > li > a:active,
+.uk-section-primary:not(.uk-preserve-color) .uk-navbar-nav > li > a:active,
+.uk-section-secondary:not(.uk-preserve-color) .uk-navbar-nav > li > a:active,
 .uk-offcanvas-bar .uk-navbar-nav > li > a:active {
   color: #fff;
 }
 .uk-light .uk-navbar-nav > li.uk-active > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-navbar-nav > li.uk-active > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-navbar-nav > li.uk-active > a,
 .uk-offcanvas-bar .uk-navbar-nav > li.uk-active > a {
   color: #fff;
 }
 .uk-light .uk-navbar-item,
+.uk-section-primary:not(.uk-preserve-color) .uk-navbar-item,
+.uk-section-secondary:not(.uk-preserve-color) .uk-navbar-item,
 .uk-offcanvas-bar .uk-navbar-item {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-navbar-toggle,
+.uk-section-primary:not(.uk-preserve-color) .uk-navbar-toggle,
+.uk-section-secondary:not(.uk-preserve-color) .uk-navbar-toggle,
 .uk-offcanvas-bar .uk-navbar-toggle {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-navbar-toggle:hover,
 .uk-light .uk-navbar-toggle:focus,
 .uk-light .uk-navbar-toggle.uk-open,
+.uk-section-primary:not(.uk-preserve-color) .uk-navbar-toggle:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-navbar-toggle:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-navbar-toggle.uk-open,
+.uk-section-secondary:not(.uk-preserve-color) .uk-navbar-toggle:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-navbar-toggle:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-navbar-toggle.uk-open,
 .uk-offcanvas-bar .uk-navbar-toggle:hover,
 .uk-offcanvas-bar .uk-navbar-toggle:focus,
 .uk-offcanvas-bar .uk-navbar-toggle.uk-open {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-subnav > * > :first-child,
+.uk-section-primary:not(.uk-preserve-color) .uk-subnav > * > :first-child,
+.uk-section-secondary:not(.uk-preserve-color) .uk-subnav > * > :first-child,
 .uk-offcanvas-bar .uk-subnav > * > :first-child {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-subnav > * > a:hover,
 .uk-light .uk-subnav > * > a:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-subnav > * > a:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-subnav > * > a:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-subnav > * > a:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-subnav > * > a:focus,
 .uk-offcanvas-bar .uk-subnav > * > a:hover,
 .uk-offcanvas-bar .uk-subnav > * > a:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-subnav > .uk-active > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-subnav > .uk-active > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-subnav > .uk-active > a,
 .uk-offcanvas-bar .uk-subnav > .uk-active > a {
   color: #fff;
 }
 .uk-light .uk-subnav-divider > :nth-child(n+2):not(.uk-first-column)::before,
+.uk-section-primary:not(.uk-preserve-color) .uk-subnav-divider > :nth-child(n+2):not(.uk-first-column)::before,
+.uk-section-secondary:not(.uk-preserve-color) .uk-subnav-divider > :nth-child(n+2):not(.uk-first-column)::before,
 .uk-offcanvas-bar .uk-subnav-divider > :nth-child(n+2):not(.uk-first-column)::before {
   border-left-color: rgba(255, 255, 255, 0.2);
 }
 .uk-light .uk-subnav-pill > * > :first-child,
+.uk-section-primary:not(.uk-preserve-color) .uk-subnav-pill > * > :first-child,
+.uk-section-secondary:not(.uk-preserve-color) .uk-subnav-pill > * > :first-child,
 .uk-offcanvas-bar .uk-subnav-pill > * > :first-child {
   background-color: transparent;
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-subnav-pill > * > a:hover,
 .uk-light .uk-subnav-pill > * > a:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-subnav-pill > * > a:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-subnav-pill > * > a:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-subnav-pill > * > a:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-subnav-pill > * > a:focus,
 .uk-offcanvas-bar .uk-subnav-pill > * > a:hover,
 .uk-offcanvas-bar .uk-subnav-pill > * > a:focus {
   background-color: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-subnav-pill > * > a:active,
+.uk-section-primary:not(.uk-preserve-color) .uk-subnav-pill > * > a:active,
+.uk-section-secondary:not(.uk-preserve-color) .uk-subnav-pill > * > a:active,
 .uk-offcanvas-bar .uk-subnav-pill > * > a:active {
   background-color: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-subnav-pill > .uk-active > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-subnav-pill > .uk-active > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-subnav-pill > .uk-active > a,
 .uk-offcanvas-bar .uk-subnav-pill > .uk-active > a {
   background-color: #fff;
   color: #666;
 }
 .uk-light .uk-subnav > .uk-disabled > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-subnav > .uk-disabled > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-subnav > .uk-disabled > a,
 .uk-offcanvas-bar .uk-subnav > .uk-disabled > a {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-breadcrumb > * > *,
+.uk-section-primary:not(.uk-preserve-color) .uk-breadcrumb > * > *,
+.uk-section-secondary:not(.uk-preserve-color) .uk-breadcrumb > * > *,
 .uk-offcanvas-bar .uk-breadcrumb > * > * {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-breadcrumb > * > :hover,
 .uk-light .uk-breadcrumb > * > :focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-breadcrumb > * > :hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-breadcrumb > * > :focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-breadcrumb > * > :hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-breadcrumb > * > :focus,
 .uk-offcanvas-bar .uk-breadcrumb > * > :hover,
 .uk-offcanvas-bar .uk-breadcrumb > * > :focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-breadcrumb > :last-child > *,
+.uk-section-primary:not(.uk-preserve-color) .uk-breadcrumb > :last-child > *,
+.uk-section-secondary:not(.uk-preserve-color) .uk-breadcrumb > :last-child > *,
 .uk-offcanvas-bar .uk-breadcrumb > :last-child > * {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-breadcrumb > :nth-child(n+2):not(.uk-first-column)::before,
+.uk-section-primary:not(.uk-preserve-color) .uk-breadcrumb > :nth-child(n+2):not(.uk-first-column)::before,
+.uk-section-secondary:not(.uk-preserve-color) .uk-breadcrumb > :nth-child(n+2):not(.uk-first-column)::before,
 .uk-offcanvas-bar .uk-breadcrumb > :nth-child(n+2):not(.uk-first-column)::before {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-tab > * > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-tab > * > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-tab > * > a,
 .uk-offcanvas-bar .uk-tab > * > a {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-tab > * > a:hover,
 .uk-light .uk-tab > * > a:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-tab > * > a:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-tab > * > a:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-tab > * > a:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-tab > * > a:focus,
 .uk-offcanvas-bar .uk-tab > * > a:hover,
 .uk-offcanvas-bar .uk-tab > * > a:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-tab > .uk-active > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-tab > .uk-active > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-tab > .uk-active > a,
 .uk-offcanvas-bar .uk-tab > .uk-active > a {
   color: #fff;
 }
 .uk-light .uk-tab > .uk-disabled > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-tab > .uk-disabled > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-tab > .uk-disabled > a,
 .uk-offcanvas-bar .uk-tab > .uk-disabled > a {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-iconnav > * > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-iconnav > * > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-iconnav > * > a,
 .uk-offcanvas-bar .uk-iconnav > * > a {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-iconnav > * > a:hover,
 .uk-light .uk-iconnav > * > a:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-iconnav > * > a:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-iconnav > * > a:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-iconnav > * > a:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-iconnav > * > a:focus,
 .uk-offcanvas-bar .uk-iconnav > * > a:hover,
 .uk-offcanvas-bar .uk-iconnav > * > a:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-iconnav > .uk-active > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-iconnav > .uk-active > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-iconnav > .uk-active > a,
 .uk-offcanvas-bar .uk-iconnav > .uk-active > a {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-text-lead,
+.uk-section-primary:not(.uk-preserve-color) .uk-text-lead,
+.uk-section-secondary:not(.uk-preserve-color) .uk-text-lead,
 .uk-offcanvas-bar .uk-text-lead {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-text-meta,
+.uk-section-primary:not(.uk-preserve-color) .uk-text-meta,
+.uk-section-secondary:not(.uk-preserve-color) .uk-text-meta,
 .uk-offcanvas-bar .uk-text-meta {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-text-muted,
+.uk-section-primary:not(.uk-preserve-color) .uk-text-muted,
+.uk-section-secondary:not(.uk-preserve-color) .uk-text-muted,
 .uk-offcanvas-bar .uk-text-muted {
   color: rgba(255, 255, 255, 0.5) !important;
 }
 .uk-light .uk-text-emphasis,
+.uk-section-primary:not(.uk-preserve-color) .uk-text-emphasis,
+.uk-section-secondary:not(.uk-preserve-color) .uk-text-emphasis,
 .uk-offcanvas-bar .uk-text-emphasis {
   color: #fff !important;
 }
 .uk-light .uk-text-primary,
+.uk-section-primary:not(.uk-preserve-color) .uk-text-primary,
+.uk-section-secondary:not(.uk-preserve-color) .uk-text-primary,
 .uk-offcanvas-bar .uk-text-primary {
   color: rgba(255, 255, 255, 0.7) !important;
 }
 .uk-light .uk-logo,
+.uk-section-primary:not(.uk-preserve-color) .uk-logo,
+.uk-section-secondary:not(.uk-preserve-color) .uk-logo,
 .uk-offcanvas-bar .uk-logo {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-logo:hover,
 .uk-light .uk-logo:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-logo:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-logo:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-logo:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-logo:focus,
 .uk-offcanvas-bar .uk-logo:hover,
 .uk-offcanvas-bar .uk-logo:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-logo > :not(.uk-logo-inverse):not(:only-of-type),
+.uk-section-primary:not(.uk-preserve-color) .uk-logo > :not(.uk-logo-inverse):not(:only-of-type),
+.uk-section-secondary:not(.uk-preserve-color) .uk-logo > :not(.uk-logo-inverse):not(:only-of-type),
 .uk-offcanvas-bar .uk-logo > :not(.uk-logo-inverse):not(:only-of-type) {
   display: none;
 }
 .uk-light .uk-logo-inverse,
+.uk-section-primary:not(.uk-preserve-color) .uk-logo-inverse,
+.uk-section-secondary:not(.uk-preserve-color) .uk-logo-inverse,
 .uk-offcanvas-bar .uk-logo-inverse {
   display: inline;
 }
 .uk-light .uk-input,
 .uk-light .uk-select,
 .uk-light .uk-textarea,
+.uk-section-primary:not(.uk-preserve-color) .uk-input,
+.uk-section-primary:not(.uk-preserve-color) .uk-select,
+.uk-section-primary:not(.uk-preserve-color) .uk-textarea,
+.uk-section-secondary:not(.uk-preserve-color) .uk-input,
+.uk-section-secondary:not(.uk-preserve-color) .uk-select,
+.uk-section-secondary:not(.uk-preserve-color) .uk-textarea,
 .uk-offcanvas-bar .uk-input,
 .uk-offcanvas-bar .uk-select,
 .uk-offcanvas-bar .uk-textarea {
@@ -7127,6 +7719,12 @@ iframe.uk-cover {
 .uk-light .uk-input:focus,
 .uk-light .uk-select:focus,
 .uk-light .uk-textarea:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-input:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-select:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-textarea:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-input:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-select:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-textarea:focus,
 .uk-offcanvas-bar .uk-input:focus,
 .uk-offcanvas-bar .uk-select:focus,
 .uk-offcanvas-bar .uk-textarea:focus {
@@ -7134,27 +7732,41 @@ iframe.uk-cover {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-input:-ms-input-placeholder,
+.uk-section-primary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder,
+.uk-section-secondary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder,
 .uk-offcanvas-bar .uk-input:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.5) !important;
 }
 .uk-light .uk-input::placeholder,
+.uk-section-primary:not(.uk-preserve-color) .uk-input::placeholder,
+.uk-section-secondary:not(.uk-preserve-color) .uk-input::placeholder,
 .uk-offcanvas-bar .uk-input::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-textarea:-ms-input-placeholder,
+.uk-section-primary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder,
+.uk-section-secondary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder,
 .uk-offcanvas-bar .uk-textarea:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.5) !important;
 }
 .uk-light .uk-textarea::placeholder,
+.uk-section-primary:not(.uk-preserve-color) .uk-textarea::placeholder,
+.uk-section-secondary:not(.uk-preserve-color) .uk-textarea::placeholder,
 .uk-offcanvas-bar .uk-textarea::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-select:not([multiple]):not([size]),
+.uk-section-primary:not(.uk-preserve-color) .uk-select:not([multiple]):not([size]),
+.uk-section-secondary:not(.uk-preserve-color) .uk-select:not([multiple]):not([size]),
 .uk-offcanvas-bar .uk-select:not([multiple]):not([size]) {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2224%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22rgba%28255,%20255,%20255,%200.7%29%22%20points%3D%2212%201%209%206%2015%206%22%20%2F%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22rgba%28255,%20255,%20255,%200.7%29%22%20points%3D%2212%2013%209%208%2015%208%22%20%2F%3E%0A%3C%2Fsvg%3E%0A");
 }
 .uk-light .uk-radio,
 .uk-light .uk-checkbox,
+.uk-section-primary:not(.uk-preserve-color) .uk-radio,
+.uk-section-primary:not(.uk-preserve-color) .uk-checkbox,
+.uk-section-secondary:not(.uk-preserve-color) .uk-radio,
+.uk-section-secondary:not(.uk-preserve-color) .uk-checkbox,
 .uk-offcanvas-bar .uk-radio,
 .uk-offcanvas-bar .uk-checkbox {
   background-color: rgba(242, 242, 242, 0.1);
@@ -7162,6 +7774,12 @@ iframe.uk-cover {
 .uk-light .uk-radio:checked,
 .uk-light .uk-checkbox:checked,
 .uk-light .uk-checkbox:indeterminate,
+.uk-section-primary:not(.uk-preserve-color) .uk-radio:checked,
+.uk-section-primary:not(.uk-preserve-color) .uk-checkbox:checked,
+.uk-section-primary:not(.uk-preserve-color) .uk-checkbox:indeterminate,
+.uk-section-secondary:not(.uk-preserve-color) .uk-radio:checked,
+.uk-section-secondary:not(.uk-preserve-color) .uk-checkbox:checked,
+.uk-section-secondary:not(.uk-preserve-color) .uk-checkbox:indeterminate,
 .uk-offcanvas-bar .uk-radio:checked,
 .uk-offcanvas-bar .uk-checkbox:checked,
 .uk-offcanvas-bar .uk-checkbox:indeterminate {
@@ -7170,28 +7788,44 @@ iframe.uk-cover {
 .uk-light .uk-radio:checked:focus,
 .uk-light .uk-checkbox:checked:focus,
 .uk-light .uk-checkbox:indeterminate:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-radio:checked:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-checkbox:checked:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-checkbox:indeterminate:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-radio:checked:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-checkbox:checked:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-checkbox:indeterminate:focus,
 .uk-offcanvas-bar .uk-radio:checked:focus,
 .uk-offcanvas-bar .uk-checkbox:checked:focus,
 .uk-offcanvas-bar .uk-checkbox:indeterminate:focus {
   background-color: #e6e6e6;
 }
 .uk-light .uk-radio:checked,
+.uk-section-primary:not(.uk-preserve-color) .uk-radio:checked,
+.uk-section-secondary:not(.uk-preserve-color) .uk-radio:checked,
 .uk-offcanvas-bar .uk-radio:checked {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Ccircle%20fill%3D%22%23666%22%20cx%3D%228%22%20cy%3D%228%22%20r%3D%222%22%20%2F%3E%0A%3C%2Fsvg%3E");
 }
 .uk-light .uk-checkbox:checked,
+.uk-section-primary:not(.uk-preserve-color) .uk-checkbox:checked,
+.uk-section-secondary:not(.uk-preserve-color) .uk-checkbox:checked,
 .uk-offcanvas-bar .uk-checkbox:checked {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2211%22%20viewBox%3D%220%200%2014%2011%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2212%201%205%207.5%202%205%201%205.5%205%2010%2013%201.5%22%20%2F%3E%0A%3C%2Fsvg%3E%0A");
 }
 .uk-light .uk-checkbox:indeterminate,
+.uk-section-primary:not(.uk-preserve-color) .uk-checkbox:indeterminate,
+.uk-section-secondary:not(.uk-preserve-color) .uk-checkbox:indeterminate,
 .uk-offcanvas-bar .uk-checkbox:indeterminate {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Crect%20fill%3D%22%23666%22%20x%3D%223%22%20y%3D%228%22%20width%3D%2210%22%20height%3D%221%22%20%2F%3E%0A%3C%2Fsvg%3E");
 }
 .uk-light .uk-form-icon,
+.uk-section-primary:not(.uk-preserve-color) .uk-form-icon,
+.uk-section-secondary:not(.uk-preserve-color) .uk-form-icon,
 .uk-offcanvas-bar .uk-form-icon {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-form-icon:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-form-icon:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-form-icon:hover,
 .uk-offcanvas-bar .uk-form-icon:hover {
   color: rgba(255, 255, 255, 0.7);
 }
