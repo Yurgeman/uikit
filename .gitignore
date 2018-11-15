@@ -6,3 +6,4 @@ themes.json
 
 package-lock.json
 !/custom/*
+!/dist/*
